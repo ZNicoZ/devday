@@ -4,7 +4,7 @@
   "description": "Samples for Consol DevDay",
   "main": "index.js",
   "scripts": {
-    "test": "sakuli run consol"
+    "test": "sakuli run tinderella"
   },
   "repository": {
     "type": "git",
@@ -18,7 +18,6 @@
   "homepage": "https://github.com/ZNicoZ/DevDaySakuli#readme",
   "dependencies": {
     "@sakuli/cli": "^2.2.1-next.12",
-    "chromedriver": "^79.0.2",
-    "geckodriver": "^1.19.1"
+    "chromedriver": "^80.0.0"
   }
 }
