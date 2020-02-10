@@ -4,34 +4,61 @@
     const screen = new Region();
     const env = new Environment();
     env.setSimilarity(0.82);
-    const max = 66000;
-    
+    const max = 20000;
+    const textEditor = new Application("/Applications/TextMate.app/Contents/Resources/mate");
+
     async function waitForElement(element, timeout) {
         await _wait(timeout, () => _isVisible(element));
     }
-    try {
-        async function highlightClick(element) {
-            await _highlight(element);
-            await _click(element);
-        }
-        await _navigateTo("https://imgflip.com/memegenerator/74454246/Beach-Testing-3");
-        await waitForElement(_textarea("mm-text"), max); 
-
-        const testMate = new Application("/Applications/TextMate.app");
-        testMate.open();
+    async function createMeme(top, bottom) {
+        await waitForElement(_textarea("mm-text"), max);
 
         const textFields = await _collect("_textarea", "mm-text");
-        await _setValue(textFields[0], "Testing");
-        await _setValue(textFields[1], "Lazy Ass");
+        await _setValue(textFields[0], top);
+        await _setValue(textFields[1], bottom);
 
         await _click(_div("Generate"));
 
         await waitForElement(_textbox("img-code link"), max);
-        let urlMeme = "";
-        urlMeme = await _getValue(_textbox("img-code link"));
+        env.setClipboard(await _getValue(_textbox("img-code link")));
 
+    }
+    async function saveMemeUrl() {
+        let editorButtonReg
+        let editorReg
+        let chromeButtonReg
+        editorButtonReg = screen.find("textmate.png");
+        await _wait(max, () => editorButtonReg.mouseMove().click());
+        editorReg = env.getRegionFromFocusedWindow();
+        await _wait(max, () => editorReg.move(20, 5).click());
+        await env.keyDown(Key.CMD, Key.DOWN);
+        await env.keyUp(Key.CMD, Key.DOWN);
+        await env.keyDown(Key.CMD, Key.DOWN);
+        await env.keyUp(Key.CMD, Key.DOWN);
+        await env.type(Key.ENTER);
+
+        await env.pasteClipboard();
+        chromeButtonReg = screen.find("chrome.png");
+        await _wait(max, () => chromeButtonReg.mouseMove().click());
+        await _wait(300);
+
+        await _click(_div("Make another"));
+
+    }
+    try {
+        await _navigateTo("https://imgflip.com/memegenerator/74454246/Beach-Testing-3");
+
+        await createMeme("Franzi", "HomeOffice");
+        await saveMemeUrl();
+        await createMeme("Katzi", "Im Element");
+        await saveMemeUrl();
+
+
+
+
+        // await _wait(3000);
         
-        await _wait(5000);
+        // await _wait(5000);
         // let navEl = _listItem("nav-item dropdown nav-item-201");
         // await highlightClick(navEl);
         // await highlightClick(_listItem(0, _in(navEl)));

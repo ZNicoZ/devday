@@ -4,7 +4,7 @@
   "description": "Samples for Consol DevDay",
   "main": "index.js",
   "scripts": {
-    "test": "sakuli run tinderella"
+    "test": "sakuli run meme"
   },
   "repository": {
     "type": "git",
