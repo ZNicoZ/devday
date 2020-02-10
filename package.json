@@ -1,0 +1,24 @@
+{
+  "name": "devdaysakuli",
+  "version": "1.0.0",
+  "description": "Samples for Consol DevDay",
+  "main": "index.js",
+  "scripts": {
+    "test": "sakuli run consol"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZNicoZ/DevDaySakuli.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ZNicoZ/DevDaySakuli/issues"
+  },
+  "homepage": "https://github.com/ZNicoZ/DevDaySakuli#readme",
+  "dependencies": {
+    "@sakuli/cli": "^2.2.1-next.12",
+    "chromedriver": "^79.0.2",
+    "geckodriver": "^1.19.1"
+  }
+}
