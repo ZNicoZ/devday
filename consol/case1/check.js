@@ -172,4 +172,4 @@
     } finally {
         await testCase.saveResult(); 
     }
-})().then(done); 
+})(); 

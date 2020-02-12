@@ -54,15 +54,12 @@
         await testCase.endOfStep("Navigate to url");
         env.setSimilarity(0.82);
 
-        await createMeme("My Girlfriend", "Doing HomeOffice");
-        await saveMemeUrl();
         await createMeme("Simon", "Developing Sakuli");
         await saveMemeUrl();
         await createMeme("DevDay", "at consol");
         await saveMemeUrl();
-
-
-        await _wait(2000);
+        await createMeme("When I hear", "Home-Office");
+        await saveMemeUrl();
 
     } catch (e) {
         await testCase.handleException(e);
