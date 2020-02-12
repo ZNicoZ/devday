@@ -44,9 +44,10 @@
 
         
         await env.sleep(5);
-        for (let i = 0; i < 5000; i++) {
+        for (let i = 0; i < 10; i++) {
+            await env.sleep(1);
             Logger.logInfo("Profile # " + i);
-            if (Math.random() > 0.997) {
+            if (Math.random() > 0.999) {
                 await env.sleep(30);
             }
             if (Math.random() > 0.2) {
