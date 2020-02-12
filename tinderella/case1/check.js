@@ -12,6 +12,7 @@
     }
 
     try {
+        // ** Login needs SMS verification code
         // await _navigateTo(url);
         // await testCase.endOfStep("Navigation");
         // await waitForElement(_button("MIT DEINER TELEFONNUMMER ANMELDEN"), max);
@@ -42,6 +43,8 @@
         // // await _setValue(_telephonebox("Fz($m) Va(m) Py(8px) Bdrs(4px)--ml Bgc($c-divider-lite)--ml Px(8px)--ml BdB--s Bdrs(0)--s Bdbc($c-secondary)--s Px(4px)--s Sq(48px) Sq(40px)--s Ta(c) Fw($bold) Mend(6px)[1]"), "9");
 
 
+
+        // ** Workaround: login manually into browser, start test and switch to the browser...
         
         await env.sleep(5);
         for (let i = 0; i < 10; i++) {
