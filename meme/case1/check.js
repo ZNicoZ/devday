@@ -31,8 +31,7 @@
         let chromeButtonReg
         editorButtonReg = await screen.find("textmate.png");
         await _wait(max, () => editorButtonReg.click());
-        editorReg = env.getRegionFromFocusedWindow();
-        await _wait(max, () => editorReg.move(20, 5).click());
+        
         await env.keyDown(Key.CMD, Key.DOWN);
         await env.keyUp(Key.CMD, Key.DOWN);
         await env.keyDown(Key.CMD, Key.DOWN);
