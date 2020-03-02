@@ -14,10 +14,13 @@
         await highlightClick(_listItem(0, _in(navEl)));
         await _highlight(_byXPath('//img[@title="Sakuli"]'));
         await _highlight(_heading2(/Zur Sakuli Produktseite/));
+        await _focus(_div("card card-type1[0]"));
         await _highlight(_div("card card-type1[0]"));
         await _highlight(_div("card card-type1[1]"));
         await _highlight(_div("card card-type1[2]"));
+        await _focus(_heading3("10-Schritte-Guide für End-to-End-Monitoring"));
         await _highlight(_heading3("10-Schritte-Guide für End-to-End-Monitoring"));
+        await testCase.endOfStep("Check Sakuli Fields on consol.de");
 
         await _navigateTo("https://sakuli.io/wp");
 
@@ -30,16 +33,22 @@
         
 
         await _setValue(_emailbox("powermail_field_email"), "h.kette@thisIsNotADomain.wuxi");
-        await _focus(_textbox("powermail_field_phone"));
-        await env.type("089 / 3993 555 98112");
-
+        // //showcase typing via environment / native keyboard:
+        // await _focus(_textbox("powermail_field_phone"));
+        // await env.type("089 / 3993 555 98112");
+        await _setValue(_textbox("powermail_field_phone"), "089 / 3993 555 98112");
         
         await _setValue(_textbox("powermail_field_company"), "Consol GmbH");
         await _setValue(_textarea("powermail_field_mitteilung"), "Hallo, ich würde gerne mehr über Ihr Produkt erfahren, bitte kontaktieren Sie mich. H.Kette");
 
         await _check(_checkbox("powermail_field_datenschutz_1"));
+        await testCase.endOfStep("Filled fields on Sakuli.io Contact Form");
+        
         await _highlight(_button("Send"));
         await _click(_button("× Close"));
+        await _wait(500);
+
+        await _navigateTo("https://sakuli.io");
 
         await _wait(4000);
 
